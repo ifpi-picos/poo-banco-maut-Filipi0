@@ -20,7 +20,7 @@ function depositar(conta, valor) {
         conta.realizarDeposito(valor);
         console.log('\nDepósito realizado com sucesso.\n');
     } else {
-        console.log('Valor de depósito inválido.');
+        console.log('\nValor de depósito inválido.\n');
     }
 }
 
@@ -40,10 +40,10 @@ function transferir(origem, destino, valor) {
             console.log('\nTransferência realizada com sucesso.\n');
             transacoes.registrarTransacao(origem, destino, valor);
         } else {
-            console.log('Saldo insuficiente na conta de origem.');
+            console.log('\nSaldo insuficiente na conta de origem.\n');
         }
     } else {
-        console.log('Conta(s) não encontrada(s).');
+        console.log('\nConta não encontrada.\n');
     }
 }
 
@@ -66,6 +66,7 @@ function exibirMenu() {
     console.log('7. Sair');
 
     const escolha = prompt('Escolha sua opção: ');
+    console.log('');
 
     switch (escolha) {
         case '1':
@@ -75,7 +76,7 @@ function exibirMenu() {
             if (contaDeposito) {
                 depositar(contaDeposito, valorDeposito);
             } else {
-                console.log('Conta não encontrada.');
+                console.log('\nConta não encontrada.\n');
             }
             exibirMenu();
             break;
@@ -88,7 +89,7 @@ function exibirMenu() {
                 contaSaque.realizarSaque(valorSaque);
                 console.log('\nSaque realizado com sucesso.\n');
             } else {
-                console.log('Conta não encontrada.');
+                console.log('\nConta não encontrada.\n');
             }
             exibirMenu();
             break;
@@ -99,7 +100,7 @@ function exibirMenu() {
             if (contaSaldo) {
                 console.log(`Saldo da conta ${contaNumeroSaldo}: ${contaSaldo.consultarSaldo()}`);
             } else {
-                console.log('Conta não encontrada.');
+                console.log('\nConta não encontrada.\n');
             }
             exibirMenu();
             break;
@@ -124,11 +125,11 @@ function exibirMenu() {
             break;
 
         case '7':
-            console.log('Saindo...');
+            console.log('\nSaindo...\n');
             break;
 
         default:
-            console.log('Opção inválida!');
+            console.log('\nOpção inválida!');
             exibirMenu();
     }
 }
