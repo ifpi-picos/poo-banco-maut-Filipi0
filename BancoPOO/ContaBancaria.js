@@ -1,17 +1,17 @@
 class ContaBancaria {
-  constructor(numero, saldo) {
+  constructor(numero, saldo){
       this.numero = numero;
       this.saldo = saldo;
       this.transacoes = [];
   }
 
-  realizarDeposito(valor) {
+  realizarDeposito(valor){
       this.saldo += valor;
       this.transacoes.push(`Deposito de ${valor}`);
   }
 
-  realizarSaque(valor) {
-      if (valor <= this.saldo) {
+  realizarSaque(valor){
+      if (valor <= this.saldo){
           this.saldo -= valor;
           this.transacoes.push(`Saque de ${valor}`);
       } else {
@@ -19,8 +19,8 @@ class ContaBancaria {
       }
   }
 
-  realizarTransferencia(valor, contaDestino) {
-      if (valor <= this.saldo) {
+  realizarTransferencia(valor, contaDestino){
+      if (valor <= this.saldo){
           this.saldo -= valor;
           contaDestino.realizarDeposito(valor);
           this.transacoes.push(`Transferência de ${valor} para a conta ${contaDestino.numero}`);
@@ -31,7 +31,7 @@ class ContaBancaria {
       }
   }
 
-  consultarSaldo() {
+  consultarSaldo(){
       return this.saldo;
   }
 }

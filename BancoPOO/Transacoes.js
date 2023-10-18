@@ -1,9 +1,9 @@
 class Transacoes {
-  constructor() {
+  constructor(){
       this.transacoes = [];
   }
 
-  registrarTransacao(origem, destino, valor) {
+  registrarTransacao(origem, destino, valor){
       const transacao = {
           origem: origem,
           destino: destino,
@@ -13,7 +13,7 @@ class Transacoes {
       this.transacoes.push(transacao);
   }
 
-  listarTransacoes(numeroConta) {
+  listarTransacoes(numeroConta){
      return this.transacoes.filter(
           (transacao) =>
              transacao.origem === numeroConta || transacao.destino === numeroConta
