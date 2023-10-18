@@ -1,10 +1,8 @@
 class Endereco {
-    constructor(logradouro, numero, cidade, estado, cep) {
-      this.logradouro = logradouro;
+    constructor(numero, cidade, estado) {
       this.numero = numero;
       this.cidade = cidade;
-      this.estado = estado;
-      this.cep = cep;
+      this.estado = estado
     }
   }
 module.exports = Endereco;

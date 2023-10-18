@@ -14,11 +14,12 @@ class Transacoes {
   }
 
   listarTransacoes(numeroConta) {
-      return this.transacoes.filter(
+     return this.transacoes.filter(
           (transacao) =>
-              transacao.origem === numeroConta || transacao.destino === numeroConta
-      );
+             transacao.origem === numeroConta || transacao.destino === numeroConta
+     );
   }
+
 }
 
 module.exports = Transacoes;

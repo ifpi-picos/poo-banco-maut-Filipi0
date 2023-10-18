@@ -1,16 +1,25 @@
 const prompt = require('prompt-sync')();
 
 const Cliente = require('./Cliente.js');
-const ContaBancaria = require('./ContaBancaria.js');
+const ContaBancaria = require('./contaBancaria.js');
 const Transacoes = require('./Transacoes.js');
+const Endereco = require('./Endereco.js');
 
 console.log("\nBem-Vindo ao Banco Virtual!\n");
 
 let nome = prompt("Digite o nome do cliente: ");
-let cfp = Number(prompt('Digite o CPF do cliente: '));
+let cfp = parseFloat(prompt('Digite o CPF do cliente: '));
 let email = prompt("Digite o email do cliente: ");
 
+console.log('\nAgora, preencha seu endereço corretamente.');
+
+let estado = prompt('Digite o nome do seu estado: ')
+let cidade = prompt('Digite sua cidade: ')
+let numero = Number(prompt('Digite o numero da sua residência: '))
+const endereco1 = new Endereco(estado, cidade, numero);
+
 const cliente = new Cliente(nome, cfp, email);
+//console.log(cliente);
 console.log('\nCliente registrado com sucesso: \n');
 
 const transacoes = new Transacoes();
@@ -48,11 +57,11 @@ function transferir(origem, destino, valor) {
 }
 
 function exibirTransacoes(numeroConta) {
-    const listaTransacoes = transacoes.listarTransacoes(numeroConta);
+ const listaTransacoes = transacoes.listarTransacoes(numeroConta);
     console.log(`\nTransações da conta ${numeroConta}:`);
     listaTransacoes.forEach((transacao) => {
-        console.log(`Origem: ${transacao.origem}, Destino: ${transacao.destino}, Valor: ${transacao.valor}, Data: ${transacao.data}`);
-    });
+      console.log(`Origem: ${transacao.origem}, Destino: ${transacao.destino}, Valor: ${transacao.valor}, Data: ${transacao.data}`);
+  });
 }
 
 function exibirMenu() {
@@ -98,7 +107,7 @@ function exibirMenu() {
             const contaNumeroSaldo = prompt("Digite o número da conta para consultar saldo: ");
             const contaSaldo = cliente.encontrarConta(contaNumeroSaldo);
             if (contaSaldo) {
-                console.log(`Saldo da conta ${contaNumeroSaldo}: ${contaSaldo.consultarSaldo()}`);
+                console.log(`Saldo da conta R$ ${contaNumeroSaldo}: ${contaSaldo.consultarSaldo()}.`);
             } else {
                 console.log('\nConta não encontrada.\n');
             }
@@ -133,5 +142,4 @@ function exibirMenu() {
             exibirMenu();
     }
 }
-
 exibirMenu();
