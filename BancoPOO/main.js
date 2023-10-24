@@ -1,7 +1,6 @@
 const prompt = require('prompt-sync')();
 
 const Cliente = require('./Cliente.js');
-//const ContaBancaria = require('./ContaBancaria.js');
 const ContaCorrente = require('./ContaCorrente.js');
 const ContaPoupanca = require('./ContaPoupanca.js');
 const Transacoes = require('./Transacoes.js');
@@ -11,6 +10,8 @@ const Notificacao = require('./Notificacao.js');
 console.log('\n**********************************');
 console.log("**** Bem-Vindo ao Banco Maut! ****");
 console.log('**********************************\n');
+console.log("Preencha o cadastro abixo.");
+console.log("*******************************");
 
 let nome = prompt("Digite o nome do cliente: ");
 let cfp = parseFloat(prompt('Digite o CPF do cliente: '));
@@ -20,6 +21,7 @@ const cliente = new Cliente(nome, cfp, email);
 const notificacao = new Notificacao(cliente);
 
 console.log('\nAgora, preencha seu endereço corretamente.');
+console.log('****************************************');
 
 let estado = prompt('Digite o nome do seu estado: ');
 let cidade = prompt('Digite sua cidade: ');
