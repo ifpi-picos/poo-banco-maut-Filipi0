@@ -1,14 +1,16 @@
 const prompt = require('prompt-sync')();
 
 const Cliente = require('./Cliente.js');
-const ContaBancaria = require('./ContaBancaria.js');
+//const ContaBancaria = require('./ContaBancaria.js');
 const ContaCorrente = require('./ContaCorrente.js');
 const ContaPoupanca = require('./ContaPoupanca.js');
 const Transacoes = require('./Transacoes.js');
 const Endereco = require('./Endereco.js');
 const Notificacao = require('./Notificacao.js');
 
-console.log("\nBem-Vindo ao Banco Virtual!\n");
+console.log('\n**********************************');
+console.log("**** Bem-Vindo ao Banco Maut! ****");
+console.log('**********************************\n');
 
 let nome = prompt("Digite o nome do cliente: ");
 let cfp = parseFloat(prompt('Digite o CPF do cliente: '));
@@ -44,7 +46,8 @@ function criarContaCorrente() {
     const chequeEspecial = parseFloat(prompt("Digite o limite do cheque especial: "));
     const novaConta = new ContaCorrente(numeroConta, saldoInicial, chequeEspecial);
     cliente.registrarConta(novaConta);
-    console.log(`\nConta corrente ${numeroConta} registrada com sucesso.\n`);
+    console.log(`\nConta corrente ${numeroConta} registrada com sucesso.`);
+    console.log('*******************************************\n');
   }
 
   function criarContaPoupanca() {
@@ -57,6 +60,7 @@ function criarContaCorrente() {
     const novaConta = new ContaPoupanca(numeroConta, saldoInicial, taxaRendimento, taxaSaque, taxaTransferencia);
     cliente.registrarConta(novaConta);
     console.log(`\nConta poupança ${numeroConta} registrada com sucesso.\n`);
+    console.log('*******************************************\n');
   }
   
 function transferir(origem, destino, valor) {
@@ -66,6 +70,7 @@ function transferir(origem, destino, valor) {
     if (contaOrigem.realizarTransferencia(valor, contaDestino)) {
       notificacao.enviarNotificacao(`Transferência realizada da conta ${contaOrigem.numero} para a conta ${contaDestino.numero} - Valor: R$ ${valor}`);
       console.log('\nTransferência realizada com sucesso.\n');
+      console.log('*******************************************\n');
       transacoes.registrarTransacao(origem, destino, valor);
     } else {
       console.log('\nSaldo insuficiente na conta de origem.\n');
@@ -170,4 +175,3 @@ function exibirMenu() {
   }
   
   exibirMenu();
-  
