@@ -16,17 +16,17 @@ let nome = prompt("Digite o nome do cliente: ");
 let cfp = parseFloat(prompt('Digite o CPF do cliente: '));
 let email = prompt("Digite o email do cliente: ");
 
+const cliente = new Cliente(nome, cfp, email);
+const notificacao = new Notificacao(cliente);
+
 console.log('\nAgora, preencha seu endereço corretamente.');
 
 let estado = prompt('Digite o nome do seu estado: ');
 let cidade = prompt('Digite sua cidade: ');
 let numero = Number(prompt('Digite o numero da sua residência: '));
-const endereco1 = new Endereco(estado, cidade, numero);
+const endereco = new Endereco(estado, cidade, numero);
 
-const cliente = new Cliente(nome, cfp, email);
-const notificacao = new Notificacao(cliente);
-
-console.log('\nCliente registrado com sucesso: \n');
+console.log('\nCliente registrado com sucesso! \n');
 
 const transacoes = new Transacoes();
 
