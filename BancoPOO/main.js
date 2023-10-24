@@ -32,7 +32,7 @@ console.log('\nCliente registrado com sucesso! \n');
 
 const transacoes = new Transacoes();
 
-function depositar(conta, valor) {
+function depositar(conta, valor){
   if (valor > 0) {
     conta.realizarDeposito(valor);
     notificacao.enviarNotificacao(`Depósito realizado na conta ${conta.numero} - Valor: R$ ${valor}`);
@@ -42,7 +42,7 @@ function depositar(conta, valor) {
   }
 }
 
-function criarContaCorrente() {
+function criarContaCorrente(){
     const numeroConta = prompt("Digite o número da conta corrente: ");
     const saldoInicial = parseFloat(prompt("Digite o saldo inicial da conta corrente: "));
     const chequeEspecial = parseFloat(prompt("Digite o limite do cheque especial: "));
@@ -52,7 +52,7 @@ function criarContaCorrente() {
     console.log('*******************************************\n');
   }
 
-  function criarContaPoupanca() {
+  function criarContaPoupanca(){
     const numeroConta = prompt("Digite o número da conta poupança: ");
     const saldoInicial = parseFloat(prompt("Digite o saldo inicial da conta poupança: "));
     let taxaRendimento = 0.10
@@ -65,24 +65,24 @@ function criarContaCorrente() {
     console.log('*******************************************\n');
   }
   
-function transferir(origem, destino, valor) {
+function transferir(origem, destino, valor){
   const contaOrigem = cliente.encontrarConta(origem);
   const contaDestino = cliente.encontrarConta(destino);
-  if (contaOrigem && contaDestino) {
-    if (contaOrigem.realizarTransferencia(valor, contaDestino)) {
+  if (contaOrigem && contaDestino){
+    if (contaOrigem.realizarTransferencia(valor, contaDestino)){
       notificacao.enviarNotificacao(`Transferência realizada da conta ${contaOrigem.numero} para a conta ${contaDestino.numero} - Valor: R$ ${valor}`);
       console.log('\nTransferência realizada com sucesso.\n');
       console.log('*******************************************\n');
       transacoes.registrarTransacao(origem, destino, valor);
-    } else {
+    }else{
       console.log('\nSaldo insuficiente na conta de origem.\n');
     }
-  } else {
+  }else{
     console.log('\nConta não encontrada.\n');
   }
 }
 
-function exibirTransacoes(numeroConta) {
+function exibirTransacoes(numeroConta){
   const listaTransacoes = transacoes.listarTransacoes(numeroConta);
   console.log(`\nTransações da conta ${numeroConta}:`);
   listaTransacoes.forEach((transacao) => {
@@ -90,7 +90,7 @@ function exibirTransacoes(numeroConta) {
   });
 }
 
-function exibirMenu() {
+function exibirMenu(){
     console.log('\nESCOLHA SUA OPERAÇÃO');
     console.log('1. Realizar Depósito em uma conta');
     console.log('2. Realizar Saque de uma conta');
@@ -104,14 +104,14 @@ function exibirMenu() {
     const escolha = prompt('Escolha sua opção: ');
     console.log('');
   
-    switch (escolha) {
+    switch (escolha){
       case '1':
         const contaNumeroDeposito = prompt("Digite o número da conta para depósito: ");
         const valorDeposito = parseFloat(prompt("Digite o valor do depósito: "));
         const contaDeposito = cliente.encontrarConta(contaNumeroDeposito);
-        if (contaDeposito) {
+        if (contaDeposito){
           depositar(contaDeposito, valorDeposito);
-        } else {
+        }else{
           console.log('\nConta não encontrada.\n');
         }
         exibirMenu();
@@ -121,11 +121,11 @@ function exibirMenu() {
         const contaNumeroSaque = prompt("Digite o número da conta para saque: ");
         const valorSaque = parseFloat(prompt("Digite o valor do saque: "));
         const contaSaque = cliente.encontrarConta(contaNumeroSaque);
-        if (contaSaque) {
+        if (contaSaque){
           contaSaque.realizarSaque(valorSaque);
           notificacao.enviarNotificacao(`Saque realizado na conta ${contaSaque.numero} - Valor: R$ ${valorSaque}`);
           console.log('\nSaque realizado com sucesso.\n');
-        } else {
+        }else{
           console.log('\nConta não encontrada.\n');
         }
         exibirMenu();
@@ -134,9 +134,9 @@ function exibirMenu() {
       case '3':
         const contaNumeroSaldo = prompt("Digite o número da conta para consultar saldo: ");
         const contaSaldo = cliente.encontrarConta(contaNumeroSaldo);
-        if (contaSaldo) {
+        if(contaSaldo){
           console.log(`Saldo da conta R$ ${contaNumeroSaldo}: ${contaSaldo.consultarSaldo()}.`);
-        } else {
+        }else{
           console.log('\nConta não encontrada.\n');
         }
         exibirMenu();
