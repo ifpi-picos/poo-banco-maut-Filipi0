@@ -15,9 +15,9 @@ console.log("*******************************");
 
 let nome = prompt("Digite o nome do cliente: ");
 let cfp = parseFloat(prompt('Digite o CPF do cliente: '));
-let email = prompt("Digite o email do cliente: ");
+let dataNascimento = prompt("Digite sua data de nascimento: ");
 
-const cliente = new Cliente(nome, cfp, email);
+const cliente = new Cliente(nome, cfp, dataNascimento);
 const notificacao = new Notificacao(cliente);
 
 console.log('\nAgora, preencha seu endereço corretamente.');

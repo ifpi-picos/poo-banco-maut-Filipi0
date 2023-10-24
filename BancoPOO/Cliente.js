@@ -1,8 +1,8 @@
 class Cliente {
-  constructor(nome, cfp, email) {
+  constructor(nome, cfp, dataNascimento) {
       this.nome = nome;
       this.cfp = cfp;
-      this.email = email;
+      this.dataNascimento = dataNascimento;
       this.contas = [];
   }
 
