@@ -10,7 +10,7 @@ const Notificacao = require('./Notificacao.js');
 console.log('\n**********************************');
 console.log("**** Bem-Vindo ao Banco Maut! ****");
 console.log('**********************************\n');
-console.log("Preencha o cadastro abixo.");
+console.log("Preencha o cadastro abaixo.");
 console.log("*******************************");
 
 let nome = prompt("Digite o nome do cliente: ");
