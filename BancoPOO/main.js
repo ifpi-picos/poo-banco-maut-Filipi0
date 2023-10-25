@@ -106,7 +106,7 @@ function exibirMenu(){
   
     switch (escolha){
       case '1':
-        const contaNumeroDeposito = prompt("Digite o número da conta para depósito: ");
+        const contaNumeroDeposito = prompt("Digite o número da conta para depositar: ");
         const valorDeposito = parseFloat(prompt("Digite o valor do depósito: "));
         const contaDeposito = cliente.encontrarConta(contaNumeroDeposito);
         if (contaDeposito){
