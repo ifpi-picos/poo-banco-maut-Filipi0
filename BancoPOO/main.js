@@ -68,14 +68,14 @@ function criarContaCorrente(){
 function transferir(origem, destino, valor){
   const contaOrigem = cliente.encontrarConta(origem);
   const contaDestino = cliente.encontrarConta(destino);
-  if (contaOrigem && contaDestino){
-    if (contaOrigem.realizarTransferencia(valor, contaDestino)){
+  if(contaOrigem && contaDestino){
+    if(contaOrigem.realizarTransferencia(valor, contaDestino)){
       notificacao.enviarNotificacao(`Transferência realizada da conta ${contaOrigem.numero} para a conta ${contaDestino.numero} - Valor: R$ ${valor}`);
-      console.log('\nTransferência realizada com sucesso.\n');
+      console.log('\nTransferência realizada com sucesso!\n');
       console.log('*******************************************\n');
       transacoes.registrarTransacao(origem, destino, valor);
     }else{
-      console.log('\nSaldo insuficiente na conta de origem.\n');
+      console.log('\nSaldo insuficiente!\n');
     }
   }else{
     console.log('\nConta não encontrada.\n');
@@ -84,7 +84,7 @@ function transferir(origem, destino, valor){
 
 function exibirTransacoes(numeroConta){
   const listaTransacoes = transacoes.listarTransacoes(numeroConta);
-  console.log(`\nTransações da conta ${numeroConta}:`);
+  console.log(`\nTransações da conta* ${numeroConta}*:`);
   listaTransacoes.forEach((transacao) => {
     console.log(`Origem: ${transacao.origem}, Destino: ${transacao.destino}, Valor: ${transacao.valor}, Data: ${transacao.data}`);
   });
@@ -171,7 +171,7 @@ function exibirMenu(){
         break;
   
       default:
-        console.log('\nOpção inválida!');
+        console.log('\nOpção inválida! Tente novamente.\n');
         exibirMenu();
     }
   }
