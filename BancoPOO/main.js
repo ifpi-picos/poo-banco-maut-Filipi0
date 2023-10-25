@@ -91,7 +91,7 @@ function exibirTransacoes(numeroConta){
 }
 
 function exibirMenu(){
-    console.log('\nESCOLHA SUA OPERAÇÃO');
+    console.log('\n<ESCOLHA SUA OPERAÇÃO>');
     console.log('1. Realizar Depósito em uma conta');
     console.log('2. Realizar Saque de uma conta');
     console.log('3. Consultar saldo de uma conta');
