@@ -33,7 +33,7 @@ console.log('\nCliente registrado com sucesso! \n');
 const transacoes = new Transacoes();
 
 function depositar(conta, valor){
-  if (valor > 0){
+  if(valor > 0){
     conta.realizarDeposito(valor);
     notificacao.enviarNotificacao(`Depósito realizado na conta ${conta.numero} - Valor: R$ ${valor}`);
     console.log('\nDepósito realizado com sucesso.\n');
