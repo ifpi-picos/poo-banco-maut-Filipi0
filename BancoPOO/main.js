@@ -1,11 +1,13 @@
 const prompt = require('prompt-sync')();
 
-const Cliente = require('./Cliente.js');
-const ContaCorrente = require('./contasBancarias/ContaCorrente.js');
-const ContaPoupanca = require('./contasBancarias/ContaPoupanca.js');
-const Transacoes = require('./Transacoes.js');
-const Endereco = require('./Endereco.js');
+const Cliente = require('./Cliente.js')
+const ContaCorrente = require('./contasBancarias/ContaCorrente.js')
+const ContaPoupanca = require('./contasBancarias/ContaPoupanca.js')
+const Transacoes = require('./Transacoes.js')
+const Endereco = require('./Endereco.js')
 const Notificacao = require('./notificacoes/Notificacao.js');
+const Notificacao_email = require('./notificacoes/Notificacao_email.js')
+const Notificacao_sms = require('./notificacoes/Notificacao_sms.js')
 
 console.log('\n**********************************');
 console.log("**** Bem-Vindo ao Banco Maut! ****");
@@ -17,9 +19,6 @@ let nome = prompt("Digite o nome do cliente: ");
 let cfp = parseFloat(prompt('Digite o CPF do cliente: '));
 let dataNascimento = prompt("Digite sua data de nascimento: ");
 
-const cliente = new Cliente(nome, cfp, dataNascimento);
-const notificacao = new Notificacao(cliente);
-
 console.log('\nAgora, preencha seu endereço corretamente.');
 console.log('****************************************');
 
@@ -28,6 +27,23 @@ let cidade = prompt('Digite sua cidade: ');
 let numero = Number(prompt('Digite o numero da sua residência: '));
 const endereco = new Endereco(estado, cidade, numero);
 
+const cliente = new Cliente(nome, cfp, dataNascimento);
+//const notificacao = new Notificacao(cliente);
+
+console.log("Como você deseja receber notificações?")
+console.log("1. SMS");
+console.log("2. Email");
+const escolhaNotificacao = prompt("Escolha a forma de notificação (1 para SMS, 2 para Email): ");
+
+let notificacao;
+if (escolhaNotificacao === '1') {
+  notificacao = new Notificacao_sms(cliente);
+} else if (escolhaNotificacao === '2') {
+  notificacao = new Notificacao_email(cliente);
+} else {
+  console.log("Opção inválida. Usando notificação padrão.");
+  notificacao = new Notificacao(cliente);
+}
 console.log('\nCliente registrado com sucesso! \n');
 
 const transacoes = new Transacoes();
