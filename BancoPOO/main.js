@@ -5,7 +5,7 @@ const ContaCorrente = require('./ContaCorrente.js');
 const ContaPoupanca = require('./ContaPoupanca.js');
 const Transacoes = require('./Transacoes.js');
 const Endereco = require('./Endereco.js');
-const Notificacao = require('./Notificacao.js');
+const Notificacao = require('./notificacoes/Notificacao.js');
 
 console.log('\n**********************************');
 console.log("**** Bem-Vindo ao Banco Maut! ****");
