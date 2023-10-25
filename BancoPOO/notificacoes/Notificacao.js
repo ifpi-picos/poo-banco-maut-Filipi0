@@ -4,7 +4,7 @@ class Notificacao{
     }
   
     enviarNotificacao(mensagem){
-      console.log(`[**Uma Transação foi efetuada!**] ${mensagem}`)
+      console.log(`{**Uma Transação foi efetuada!**} ${mensagem}`)
     }
   }
   
