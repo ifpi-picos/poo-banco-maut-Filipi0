@@ -1,8 +1,8 @@
 const prompt = require('prompt-sync')();
 
 const Cliente = require('./Cliente.js');
-const ContaCorrente = require('./ContaCorrente.js');
-const ContaPoupanca = require('./ContaPoupanca.js');
+const ContaCorrente = require('./contasBancarias/ContaCorrente.js');
+const ContaPoupanca = require('./contasBancarias/ContaPoupanca.js');
 const Transacoes = require('./Transacoes.js');
 const Endereco = require('./Endereco.js');
 const Notificacao = require('./notificacoes/Notificacao.js');
@@ -35,7 +35,7 @@ const transacoes = new Transacoes();
 function depositar(conta, valor){
   if(valor > 0){
     conta.realizarDeposito(valor);
-    notificacao.enviarNotificacao(`Depósito realizado na conta ${conta.numero} - Valor: R$ ${valor}`);
+    notificacao.enviarNotificacao(`\nDepósito realizado na conta ${conta.numero} - Valor: R$ ${valor}`);
     console.log('\nDepósito realizado com sucesso.\n');
   }else{
     console.log('\nValor de depósito inválido.\n');
@@ -70,7 +70,7 @@ function transferir(origem, destino, valor){
   const contaDestino = cliente.encontrarConta(destino);
   if(contaOrigem && contaDestino){
     if(contaOrigem.realizarTransferencia(valor, contaDestino)){
-      notificacao.enviarNotificacao(`Transferência realizada da conta ${contaOrigem.numero} para a conta ${contaDestino.numero} - Valor: R$ ${valor}`);
+      notificacao.enviarNotificacao(`\nTransferência realizada da conta ${contaOrigem.numero} para a conta ${contaDestino.numero} - Valor: R$ ${valor}`);
       console.log('\nTransferência realizada com sucesso!\n');
       console.log('*******************************************\n');
       transacoes.registrarTransacao(origem, destino, valor);
